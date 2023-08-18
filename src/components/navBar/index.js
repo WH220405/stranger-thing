@@ -12,6 +12,7 @@ function NavBar() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/posts">Posts</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/profile">Logout</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
