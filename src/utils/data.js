@@ -1,143 +1,198 @@
-const items = [
-    {
-      title: "Vintage Bicycle",
-      description: "A well-preserved vintage bicycle from the 1970s. In excellent condition.",
-      price: "$250",
-      seller: "John Doe",
-      location: "New York, NY"
-    },
-    {
-      title: "Antique Desk Lamp",
-      description: "Brass lamp from the early 1900s. Some wear but still works perfectly.",
-      price: "$100",
-      seller: "Jane Smith",
-      location: "Los Angeles, CA"
-    },
-    {
-      title: "Modern Sofa Set",
-      description: "A 3-piece modern sofa set in gray. Barely used, like new.",
-      price: "$800",
-      seller: "Alice Brown",
-      location: "Chicago, IL"
-    },
-    {
-      title: "Canon DSLR Camera",
-      description: "Canon 5D Mark IV. Comes with a standard lens. Good condition.",
-      price: "$1500",
-      seller: "Bob White",
-      location: "Houston, TX"
-    },
-    {
-      title: "Acoustic Guitar",
-      description: "Yamaha acoustic guitar. Perfect for beginners. Few scratches.",
-      price: "$120",
-      seller: "Chris Green",
-      location: "Phoenix, AZ"
-    },
-    {
-      title: "Lawn Mower",
-      description: "Gas-powered lawn mower. Works great, just upgraded to a new one.",
-      price: "$200",
-      seller: "Diane Black",
-      location: "Philadelphia, PA"
-    },
-    {
-      title: "Vintage Record Player",
-      description: "1970s record player in working condition. Great for collectors.",
-      price: "$75",
-      seller: "Eve Adams",
-      location: "San Antonio, TX"
-    },
-    {
-      title: "Leather Jacket",
-      description: "Black leather jacket, size M. Slightly worn.",
-      price: "$50",
-      seller: "Frank Johnson",
-      location: "San Diego, CA"
-    },
-    {
-      title: "Designer Handbag",
-      description: "Gucci handbag, authentic, barely used.",
-      price: "$650",
-      seller: "Grace Hill",
-      location: "Dallas, TX"
-    },
-    {
-      title: "Mountain Bike",
-      description: "Trek mountain bike in blue. Good condition, ready to ride.",
-      price: "$450",
-      seller: "Henry Wilson",
-      location: "San Jose, CA"
-    },
-    {
-      title: "Wrist Watch",
-      description: "Seiko men's wrist watch, silver. Needs battery replacement.",
-      price: "$40",
-      seller: "Irene Turner",
-      location: "Austin, TX"
-    },
-    {
-      title: "Laptop",
-      description: "Dell XPS 13, 16GB RAM, 512GB SSD. Lightly used.",
-      price: "$900",
-      seller: "Jack Roberts",
-      location: "Jacksonville, FL"
-    },
-    {
-      title: "Coffee Table",
-      description: "Wooden coffee table with a glass center. Minimalist design.",
-      price: "$110",
-      seller: "Karen Clark",
-      location: "San Francisco, CA"
-    },
-    {
-      title: "Dining Set",
-      description: "6-chair dining set. Wooden with cushioned seats.",
-      price: "$400",
-      seller: "Larry Phillips",
-      location: "Columbus, OH"
-    },
-    {
-      title: "Refrigerator",
-      description: "Samsung double-door fridge. Stainless steel. Good condition.",
-      price: "$650",
-      seller: "Mandy Rogers",
-      location: "Fort Worth, TX"
-    },
-    {
-      title: "Office Chair",
-      description: "Ergonomic office chair in black. Adjustable height.",
-      price: "$90",
-      seller: "Neil Cox",
-      location: "Indianapolis, IN"
-    },
-    {
-      title: "Yoga Mat",
-      description: "Thick yoga mat in purple. Barely used.",
-      price: "$20",
-      seller: "Olivia Mills",
-      location: "Charlotte, NC"
-    },
-    {
-      title: "Portable Grill",
-      description: "Weber portable grill. Perfect for camping or picnics.",
-      price: "$60",
-      seller: "Paul Walker",
-      location: "Seattle, WA"
-    },
-    {
-      title: "Home Theater System",
-      description: "Sony 5.1 channel home theater system. Amazing sound quality.",
-      price: "$300",
-      seller: "Quinn Murphy",
-      location: "Denver, CO"
-    },
-    {
-      title: "Microwave Oven",
-      description: "Panasonic microwave oven. Good condition.",
-      price: "$70",
-      seller: "Rachel Lee",
-      location: "Atlanta, GA"
-    }
-  ];
-  export default items
+const COHORT_NAME = "2302-acc-pt-web-pt-e";
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+const tokens =
+  "Bearer eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9";
+
+// export async function getPosts() {
+//   const response = await fetch(`${BASE_URL}/posts`);
+//   if (!response.ok) {
+//     throw { message: "Failed to fetch posts", status: 500 };
+//   }
+//   return response.json();
+// }
+//Authentication throught Json web tokens
+
+export async function authenticate(token) {
+  try {
+    const response = await fetch(`${BASE_URL}/${tokens}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({}),
+    });
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//useed to created a user account, will be given a JSON wen Token to be passsed to the server for requests requiring authentication
+//body: user(Object), username(string), password(string)
+//returned data: token(string) the JSON WebToken which is used to authenticate the user with any future calls
+//message(string): thanks for signing up for our service
+
+//POST /users/register
+export async function registerUser(username, password) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password,
+        },
+      }),
+    });
+    const result = await response.json();
+    // you can ^^ log the result
+    // here below to view the json object before returning it
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function login(username, password) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function myData(token) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const fetchPosts = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`);
+
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// this function using in CreatePostForm.jsx
+export async function makePost(token, post) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ post }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function updatePost(token) {
+  try {
+    // You will need to insert a variable into the fetch template literal
+    // in order to make the POST_ID dynamic.
+    // 5e8d1bd48829fb0017d2233b is just for demonstration.
+    const response = await fetch(`${BASE_URL}/posts/5e8d1bd48829fb0017d2233b`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title: "My favorite stuffed animal",
+          description:
+            "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
+          price: "$480.00",
+          location: "New York, NY",
+          willDeliver: true,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function deletePost(token) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/5e8d1bd48829fb0017d2233b`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function postMessage(token, content, id) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${id}/messages`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        message: {
+          content: content,
+        },
+      }),
+    });
+    const result = await response.json();
+
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}

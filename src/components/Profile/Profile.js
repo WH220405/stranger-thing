@@ -1,8 +1,8 @@
-import NavBar from "../navBar";
+import NavBar from "../navBar/NavBar";
 function Profile() {
   return (
     <div className="Profile">
-      <NavBar/>
+      <NavBar />
       profile
     </div>
   );

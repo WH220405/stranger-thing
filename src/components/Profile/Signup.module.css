@@ -1,0 +1,28 @@
+.h1 {
+  text-align: center;
+  margin-top: 70px;
+  color: blue;
+}
+
+.form {
+  margin: 70px;
+  display: grid;
+  text-align: center;
+}
+
+.username {
+  height: 2.5rem;
+  width: 15rem;
+}
+
+.password {
+  height: 2.5rem;
+  width: 15rem;
+}
+
+.btn {
+  color: blue;
+  margin-left: 70px;
+  background-color: beige;
+  text-align: center;
+}

@@ -1,9 +1,9 @@
-import NavBar from '../../navBar';
+import NavBar from "../../navBar/NavBar";
 
 function Post() {
   return (
     <div className="Posts">
-      <NavBar/>
+      <NavBar />
       post
     </div>
   );

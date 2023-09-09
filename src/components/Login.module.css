@@ -1,0 +1,30 @@
+.h1 {
+  margin: 90px;
+  text-align: center;
+}
+
+.container {
+  margin: 20px;
+  text-align: center;
+}
+
+.control {
+  margin: 20px;
+}
+.btn {
+  width: 18rem;
+  margin: 2rem;
+  color: blue;
+  margin-left: 70px;
+  background-color: beige;
+}
+
+.username {
+  height: 2.5rem;
+  width: 15rem;
+}
+
+.password {
+  height: 2.5rem;
+  width: 15rem;
+}
