@@ -8,11 +8,13 @@ function NavBar() {
     <>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">Stranger's Things</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/posts">Posts</Nav.Link>
-            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/">HOME</Nav.Link>
+            <Nav.Link href="/posts">POSTS</Nav.Link>
+            <Nav.Link href="/profile">PROFILE</Nav.Link>
+            <Nav.Link href="/loginform">LOG IN</Nav.Link>
+            <Nav.Link href="/logout">LOG OUT</Nav.Link>
             <Nav.Link
               to="/auth?mode=login"
               className={({ isActive }) =>

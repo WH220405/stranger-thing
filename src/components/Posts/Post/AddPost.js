@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import classes from "./AddPost.module.css";
+import NavBar from "../../navBar/NavBar";
 
 const AddPost = () => {
   const [title, setTitle] = useState("");
@@ -39,74 +40,69 @@ const AddPost = () => {
   // }, []);
 
   return (
-    <Form onSubmit={submitHandler}>
-      <Row className="mb-3">
+    <>
+      <NavBar />
+      <h1 className={classes.h1}> Add New Post</h1>
+      <Form className={classes.control} onSubmit={submitHandler}>
+        <Row className="mb-3">
+          <Form.Group as={Col} md="4">
+            <Form.Label>Title:</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Enter Title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+          </Form.Group>
+        </Row>
+
         <Form.Group as={Col} md="4">
-          <Form.Label>Title:</Form.Label>
+          <Form.Label>Description:</Form.Label>
           <Form.Control
             required
             type="text"
-            placeholder="Enter Title"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
+            placeholder="Enter Description"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
           />
         </Form.Group>
-      </Row>
 
-      <Form.Group as={Col} md="4">
-        <Form.Label>Description:</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder="Enter Description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group as={Col} md="4">
+          <Form.Label>Price:</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="Enter Price"
+            value={price}
+            onChange={e => setPrice(e.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group as={Col} md="4">
-        <Form.Label>Price:</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder="Enter Price"
-          value={price}
-          onChange={e => setPrice(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group as={Col} md="4">
+          <Form.Label>Location:</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="Enter Location"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group as={Col} md="4">
-        <Form.Label>Location:</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder="Enter Location"
-          value={location}
-          onChange={e => setLocation(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group as={Col} md="5">
+          <Form.Check
+            required
+            type="checkbox"
+            label="Willing to Deliver?"
+            value={willDeliver}
+            onChange={() => setWillDeliver(true)}
+          />
+        </Form.Group>
 
-      <Form.Group as={Col} md="4">
-        <Form.Label>will you deliver?</Form.Label>
-        <Form.Check
-          required
-          type="radio"
-          label="Yes, I will deliver"
-          value={willDeliver}
-          onChange={() => setWillDeliver(true)}
-        />
-
-        <Form.Check
-          required
-          type="radio"
-          label="No, I will not deliver"
-          value={!willDeliver}
-          onChange={() => setWillDeliver(false)}
-        />
-      </Form.Group>
-
-      <Button type="submit">Submit form</Button>
-    </Form>
+        <Button type="submit">CREATE</Button>
+      </Form>
+    </>
   );
 };
 

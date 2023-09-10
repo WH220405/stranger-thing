@@ -3,15 +3,6 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 const tokens =
   "Bearer eyJfaWQiOiI1ZTg5MDY2ZGQ0MzkxNjAwTc1NTNlMDUiLCJ1c2VybmFtZSI6Im1hdHQiLCJpYXQiOjE1ODYwMzgzODF9";
 
-// export async function getPosts() {
-//   const response = await fetch(`${BASE_URL}/posts`);
-//   if (!response.ok) {
-//     throw { message: "Failed to fetch posts", status: 500 };
-//   }
-//   return response.json();
-// }
-//Authentication throught Json web tokens
-
 export async function authenticate(token) {
   try {
     const response = await fetch(`${BASE_URL}/${tokens}`, {

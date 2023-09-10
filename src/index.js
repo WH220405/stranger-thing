@@ -11,13 +11,15 @@ import AddPost from "./components/Posts/Post/AddPost";
 import Signup from "./components/Profile/Signup";
 import LoginForm from "./components/Login";
 import SendMessage from "./components/Posts/Post/SendMessage";
+import Home from "./components/navBar/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/loginform" element={<LoginForm />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
