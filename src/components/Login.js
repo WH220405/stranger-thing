@@ -27,7 +27,7 @@ const LoginForm = () => {
   return (
     <>
       <NavBar />
-      <h1 className={classes.h1}>Log In</h1>
+      <h1 className="text-center mt-5">Log In</h1>
       <form className={classes.container} onSubmit={handlerSubmit}>
         <div className={classes.control}>
           <label>Username: </label>

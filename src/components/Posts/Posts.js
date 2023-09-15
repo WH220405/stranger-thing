@@ -72,3 +72,6 @@ function Posts() {
 }
 
 export default Posts;
+
+// posts page will link  also have view button // posts/600bbhh4b and will have delete and edit 
+// and send messags button

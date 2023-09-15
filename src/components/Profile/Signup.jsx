@@ -59,3 +59,4 @@ const Signup = () => {
 };
 
 export default Signup;
+// page link to login, but shouldnt show log in form.

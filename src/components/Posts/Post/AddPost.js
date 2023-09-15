@@ -107,3 +107,5 @@ const AddPost = () => {
 };
 
 export default AddPost;
+
+// after clicked create will linl to posts page

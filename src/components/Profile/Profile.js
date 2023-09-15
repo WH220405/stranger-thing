@@ -8,6 +8,7 @@ function Profile() {
       <NavBar />
       <h1 className={classes.h1}>{`Welcome ${username}`}</h1>
       <h4>messages to Me:</h4>
+      
     </div>
   );
 }

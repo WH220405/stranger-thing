@@ -27,6 +27,10 @@ const EditPost = ({ post, id }) => {
   }
   updatePost({ post, id });
 
+  const changeHandle = () => {
+    
+  }
+
   return (
     <>
       <h1>Edit Post</h1>
